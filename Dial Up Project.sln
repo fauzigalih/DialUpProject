@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dial Up Project", "Dial Up Project.csproj", "{B71DDDF1-97A8-4476-9EAA-7B7C0FBA8EAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B71DDDF1-97A8-4476-9EAA-7B7C0FBA8EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71DDDF1-97A8-4476-9EAA-7B7C0FBA8EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71DDDF1-97A8-4476-9EAA-7B7C0FBA8EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71DDDF1-97A8-4476-9EAA-7B7C0FBA8EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FE3AA1E-4B04-4A6D-8819-A9DBD86A6A41}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+D:\All Programs\ASP\Dial Up Project\bin\Debug\netcoreapp3.1\Dial Up Project.exe
+D:\All Programs\ASP\Dial Up Project\bin\Debug\netcoreapp3.1\Dial Up Project.deps.json
+D:\All Programs\ASP\Dial Up Project\bin\Debug\netcoreapp3.1\Dial Up Project.runtimeconfig.json
+D:\All Programs\ASP\Dial Up Project\bin\Debug\netcoreapp3.1\Dial Up Project.runtimeconfig.dev.json
+D:\All Programs\ASP\Dial Up Project\bin\Debug\netcoreapp3.1\Dial Up Project.dll
+D:\All Programs\ASP\Dial Up Project\bin\Debug\netcoreapp3.1\Dial Up Project.pdb
+D:\All Programs\ASP\Dial Up Project\obj\Debug\netcoreapp3.1\Dial Up Project.csprojAssemblyReference.cache
+D:\All Programs\ASP\Dial Up Project\obj\Debug\netcoreapp3.1\Dial Up Project.csproj.CoreCompileInputs.cache
+D:\All Programs\ASP\Dial Up Project\obj\Debug\netcoreapp3.1\Dial Up Project.AssemblyInfoInputs.cache
+D:\All Programs\ASP\Dial Up Project\obj\Debug\netcoreapp3.1\Dial Up Project.AssemblyInfo.cs
+D:\All Programs\ASP\Dial Up Project\obj\Debug\netcoreapp3.1\Dial Up Project.dll
+D:\All Programs\ASP\Dial Up Project\obj\Debug\netcoreapp3.1\Dial Up Project.pdb
+D:\All Programs\ASP\Dial Up Project\obj\Debug\netcoreapp3.1\Dial Up Project.genruntimeconfig.cache
