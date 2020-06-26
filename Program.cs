@@ -38,7 +38,7 @@ namespace Dial_Up_Project
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
                     Console.WriteLine();
-                    Program.Main();
+                    Main();
                     break;
             }
         }
