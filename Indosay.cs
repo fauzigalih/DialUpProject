@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Dial_Up_Project
 {
-    class Indosat
+    class Indosay
     {
-        public Indosat()
+        public Indosay()
         {
             Home();
         }
@@ -18,7 +17,7 @@ namespace Dial_Up_Project
         
         private static void Home()
         {
-            Console.WriteLine("Selamat Datang di Layanan Indosat \nSilakan melakukan dial up seperti *123# dan lainnya");
+            Console.WriteLine("Selamat Datang di Layanan Indosay \nSilakan melakukan dial up seperti *123# dan lainnya");
             Console.WriteLine("99. Kembali");
             Console.Write("Jawab: ");
             string answer = Console.ReadLine();
@@ -36,7 +35,7 @@ namespace Dial_Up_Project
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
                     Console.WriteLine();
-                    new Indosat();
+                    new Indosay();
                     break;
             }
         }
@@ -46,7 +45,7 @@ namespace Dial_Up_Project
             Console.WriteLine(
                 "1. NEW! Freedom Kuota Harian \n" +
                 "2. Freedom Internet \n" +
-                "3. Info Paket \n" +
+                "3. Info \n" +
                 "99. Kembali");
             Console.Write("Jawab: ");
             string answer = Console.ReadLine();
@@ -66,13 +65,13 @@ namespace Dial_Up_Project
                     break;
                 case "99":
                     Console.Clear();
-                    new Indosat();
+                    new Indosay();
                     break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
                     Console.WriteLine();
-                    Indosat.Dial_123();
+                    Dial_123();
                     break;
             }
         }
@@ -109,7 +108,7 @@ namespace Dial_Up_Project
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
                     Console.WriteLine();
-                    Indosat.Menu_1();
+                    Menu_1();
                     break;
             }
         }
@@ -175,15 +174,69 @@ namespace Dial_Up_Project
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
                     Console.WriteLine();
-                    Indosat.Menu_2();
+                    Menu_2();
                     break;
             }
         }
 
         private static void Menu_3()
         {
+            Console.WriteLine("Cek paketmu disini! \n" +
+                "1. Cek Nomer \n" +
+                "2. Cek Kuota \n" +
+                "99. Kembali");
+            Console.Write("Jawab: ");
+            string answer = Console.ReadLine();
+            switch (answer)
+            {
+                case "1":
+                    Console.Clear();
+                    CheckNumber();
+                    break;
+                case "2":
+                    Console.Clear();
+                    CheckPaket();
+                    break;
+                case "99":
+                    Console.Clear();
+                    Dial_123();
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
+                    Console.WriteLine();
+                    Menu_3();
+                    break;
+            }
+        }
+
+        private static void CheckNumber()
+        {
+            string str = "Indosay";
+            uint number = (uint)Convert.ToInt32(str.GetHashCode());
+            Console.WriteLine($"Nomer kartu perdana anda adalah 085{number} dengan tarif prabayar aktif. \n" +
+                $"99. Kembali");
+            Console.Write("Jawab: ");
+            string answer = Console.ReadLine();
+            switch (answer)
+            {
+                case "99":
+                    Console.Clear();
+                    Menu_3();
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
+                    Console.WriteLine();
+                    CheckNumber();
+                    break;
+            }
+        }
+
+        private static void CheckPaket()
+        {
             Console.Clear();
-            if(pakets.Count() == 0)
+            if (pakets.Count() == 0)
             {
                 Console.WriteLine("Kamu tidak memiliki paket apapun");
                 Console.WriteLine();
@@ -203,13 +256,13 @@ namespace Dial_Up_Project
                 {
                     case "99":
                         Console.Clear();
-                        Dial_123();
+                        Menu_3();
                         break;
                     default:
                         Console.Clear();
                         Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
                         Console.WriteLine();
-                        Indosat.Menu_3();
+                        CheckPaket();
                         break;
                 }
             }
