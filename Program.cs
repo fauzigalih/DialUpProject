@@ -8,6 +8,7 @@ namespace Dial_Up_Project
         {
             Main();
         }
+
         static void Main()
         {
             Console.WriteLine("Selamat Datang, silakan pilih menu untuk menggunakan Dial Up");
@@ -26,11 +27,11 @@ namespace Dial_Up_Project
             {
                 case "1":
                     Console.Clear();
-                    new Telkomsay();
+                    Telkomsay.Home();
                     break;
                 case "2":
                     Console.Clear();
-                    new Indosay();
+                    Indosay.Home();
                     break;
                 case "3":
                     break;
