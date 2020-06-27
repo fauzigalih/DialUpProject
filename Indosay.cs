@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Dial_Up_Project
 {
     class Indosay
     {
-        public Indosay()
-        {
-            Home();
-        }
-
         static int pulsa = 120000;
         static string date = (DateTime.Now).AddDays(6).ToShortDateString();
         static List<Paket> pakets = new List<Paket>();
+        static int paketIndosayID = new Paket().paketIndosayID;
         
-        private static void Home()
+        public static void Home()
         {
             Console.WriteLine("Selamat Datang di Layanan Indosay \nSilakan melakukan dial up seperti *123# dan lainnya");
             Console.WriteLine("99. Kembali");
@@ -35,10 +32,11 @@ namespace Dial_Up_Project
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
                     Console.WriteLine();
-                    new Indosay();
+                    Home();
                     break;
             }
         }
+
         private static void Dial_123()
         {
             Console.WriteLine("Pulsa Rp. {0} s.d {1}", pulsa, date);
@@ -65,7 +63,7 @@ namespace Dial_Up_Project
                     break;
                 case "99":
                     Console.Clear();
-                    new Indosay();
+                    Home();
                     break;
                 default:
                     Console.Clear();
@@ -78,7 +76,8 @@ namespace Dial_Up_Project
 
         private static void Menu_1()
         {
-            Console.WriteLine("Freedom Kuota Harian 1GB/hr (Rp2rb utk COVID-19)");
+            string paket = "Freedom";
+            Console.WriteLine("{0} Kuota Harian 1GB/hr (Rp2rb utk COVID-19)", paket);
             Console.WriteLine(
                 "1. Mau \n" +
                 "99. Kembali");
@@ -88,17 +87,7 @@ namespace Dial_Up_Project
             {
                 case "1":
                     Console.Clear();
-                    if(pulsa <= 2000)
-                    {
-                        Console.WriteLine("Pulsa kamu tidak cukup untuk membeli paket ini. \n");
-                    }
-                    else
-                    {
-                        pulsa -= 2000;
-                        pakets.Add(new Paket() { PaketID = 1, PaketName = "Freedom Kuota 1GB", PaketDate = (DateTime.Now).ToShortDateString() });
-                        Console.WriteLine("Paket anda telah di proses. \n");
-                    }
-                    Dial_123();
+                    Paket(paket, 1, 2000);
                     break;
                 case "99":
                     Console.Clear();
@@ -115,7 +104,9 @@ namespace Dial_Up_Project
 
         private static void Menu_2()
         {
-            Console.WriteLine("Freedom Kuota Bulanan");
+            int menu = 2;
+            string paket = "Freedom";
+            Console.WriteLine("{0} Kuota Bulanan", paket);
             Console.WriteLine(
                 "1. 30GB, 100rb \n" +
                 "2. 21GB, 75rb \n" +
@@ -127,48 +118,15 @@ namespace Dial_Up_Project
             {
                 case "1":
                     Console.Clear();
-                    if(pulsa <= 100000)
-                    {
-                        Console.WriteLine("Pulsa kamu tidak cukup untuk membeli paket ini. \n");
-                    }
-                    else
-                    {
-                        pulsa -= 100000;
-                        date = (DateTime.Now).AddDays(29).ToShortDateString();
-                        pakets.Add(new Paket() { PaketID = 2, PaketName = "Freedom Kuota 30GB", PaketDate = date });
-                        Console.WriteLine("Paket anda telah di proses. \n");
-                    }
-                    Dial_123();
+                    ConfirmPaket(menu, paket, 30, 100000, 29, true);
                     break;
                 case "2":
                     Console.Clear();
-                    if(pulsa <= 75000)
-                    {
-                        Console.WriteLine("Pulsa kamu tidak cukup untuk membeli paket ini. \n");
-                    }
-                    else
-                    {
-                        pulsa -= 75000;
-                        date = (DateTime.Now).AddDays(29).ToShortDateString();
-                        pakets.Add(new Paket() { PaketID = 3, PaketName = "Freedom Kuota 21GB", PaketDate = date });
-                        Console.WriteLine("Paket anda telah di proses. \n");
-                    }
-                    Dial_123();
+                    ConfirmPaket(menu, paket, 21, 75000, 29, true);
                     break;
                 case "3":
                     Console.Clear();
-                    if(pulsa <= 50000)
-                    {
-                        Console.WriteLine("Pulsa kamu tidak cukup untuk membeli paket ini. \n");
-                    }
-                    else
-                    {
-                        pulsa -= 50000;
-                        date = (DateTime.Now).AddDays(29).ToShortDateString();
-                        pakets.Add(new Paket() { PaketID = 4, PaketName = "Freedom Kuota 13GB", PaketDate = date });
-                        Console.WriteLine("Paket anda telah di proses. \n");
-                    }
-                    Dial_123();
+                    ConfirmPaket(menu, paket, 13, 50000, 29, true);
                     break;
                 default:
                     Console.Clear();
@@ -210,6 +168,55 @@ namespace Dial_Up_Project
             }
         }
 
+        private static void ReffMenu(int menu)
+        {
+            string str = "Menu_" + menu;
+            Type type = typeof(Indosay);
+            MethodInfo myMethod = type.GetMethod(str);
+            Indosay ind = new Indosay();
+            myMethod.Invoke(ind, null);
+        }
+
+        private static void ConfirmPaket(int menu, string paket, int giga, int price, int duration = 0, bool expand = false)
+        {
+            Console.WriteLine("Anda akan membeli Paket {0} Kuota {1}GB/{2}hari \n" +
+                "dengan harga Rp.{3}? \n" +
+                "1. Beli \n" +
+                "99. Kembali", paket, giga, duration + 1, price);
+            Console.Write("Jawab: ");
+            string answer = Console.ReadLine();
+            switch (answer)
+            {
+                case "1":
+                    Console.Clear();
+                    Paket(paket, giga, price, duration, expand);
+                    break;
+                case "99":
+                    Console.Clear();
+                    ReffMenu(menu);
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
+                    Console.WriteLine();
+                    ConfirmPaket(menu, paket, giga, price, duration, expand);
+                    break;
+            }
+        }
+
+        private static void Paket(string paket, int giga, int price, int duration = 0, bool expand = false)
+        {
+            if (pulsa <= price) Console.WriteLine("Pulsa kamu tidak cukup untuk membeli paket ini. \n");
+            else
+            {
+                pulsa -= price;
+                if(expand) date = (DateTime.Now).AddDays(duration).ToShortDateString();
+                pakets.Add(new Paket() { PaketID = paketIndosayID, PaketName = $"{paket} Kuota {giga}GB", PaketDate = (DateTime.Now).AddDays(duration).ToShortDateString() });
+                Console.WriteLine("Paket anda telah di proses. \n");
+            }
+            Dial_123();
+        }
+
         private static void CheckNumber()
         {
             string str = "Indosay";
@@ -235,17 +242,20 @@ namespace Dial_Up_Project
 
         private static void CheckPaket()
         {
-            Console.Clear();
-            if (pakets.Count() == 0)
+            var checkPaket = from paket in pakets
+                             where paket.PaketID == paketIndosayID
+                             select paket;
+
+            if (checkPaket.Count() == 0)
             {
                 Console.WriteLine("Kamu tidak memiliki paket apapun");
                 Console.WriteLine();
-                Dial_123();
+                Menu_3();
             }
             else
             {
                 Console.WriteLine("Kamu memiliki paket berikut:");
-                foreach (var i in pakets)
+                foreach (var i in checkPaket)
                 {
                     Console.WriteLine($"- {i.PaketName} berlaku hingga {i.PaketDate}");
                 }
@@ -267,12 +277,5 @@ namespace Dial_Up_Project
                 }
             }
         }
-    }
-
-    class Paket
-    {
-        public int PaketID { get; set; }
-        public string PaketName { get; set; }
-        public string PaketDate { get; set; }
     }
 }
