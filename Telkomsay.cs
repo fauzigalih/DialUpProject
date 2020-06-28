@@ -12,6 +12,7 @@ namespace Dial_Up_Project
         static string date = DateTime.Now.AddDays(7).ToShortDateString();
         static List<Paket> pakets = new List<Paket>();
         static int paketTelkomsayID = new Paket().paketTelkomsayID;
+        public delegate void Referrer(int menu);
 
         public static void Home()
         {
@@ -119,6 +120,10 @@ namespace Dial_Up_Project
                     Console.Clear();
                     ConfirmPaket(menu, paket, 3, 10000, 6);
                     break;
+                case "99":
+                    Console.Clear();
+                    Dial_888();
+                    break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
@@ -162,6 +167,10 @@ namespace Dial_Up_Project
                 case "5":
                     Console.Clear();
                     ConfirmPaket(menu, paket, 3, 10000, 6);
+                    break;
+                case "99":
+                    Console.Clear();
+                    Dial_888();
                     break;
                 default:
                     Console.Clear();
@@ -207,6 +216,10 @@ namespace Dial_Up_Project
                     Console.Clear();
                     ConfirmPaket(menu, paket, 3, 10000, 6);
                     break;
+                case "99":
+                    Console.Clear();
+                    Dial_888();
+                    break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Tidak ada menu tersedia yang kamu pilih");
@@ -250,6 +263,10 @@ namespace Dial_Up_Project
                 case "5":
                     Console.Clear();
                     ConfirmPaket(menu, paket, 3, 10000, 6);
+                    break;
+                case "99":
+                    Console.Clear();
+                    Dial_888();
                     break;
                 default:
                     Console.Clear();
@@ -317,7 +334,8 @@ namespace Dial_Up_Project
                     break;
                 case "99":
                     Console.Clear();
-                    ReffMenu(menu);
+                    Referrer referrer = ReffMenu;
+                    referrer(menu);
                     break;
                 default:
                     Console.Clear();
