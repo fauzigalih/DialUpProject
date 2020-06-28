@@ -1,7 +1,7 @@
 # DialUpProject
  Example Dial Up Phone
  
- Status : <b>On Progress</b>
+ Status : <b>Release</b>
  
  # Required Project
  1. NET Core SDK Version 3.1
